@@ -15,7 +15,13 @@ jobs:
           python-version: '3.9'
       - name: Install dependencies
         run: pip install requests
+      - name: Check MY_BARK_KEY
+        run: |
+          if [ -z "${{ secrets.MY_BARK_KEY }}" ]; then
+            echo "Secret MY_BARK_KEY not set — skipping script."
+            exit 0
+          fi
       - name: Run script
         env:
-         MY_BARK_KEY: ${{ secrets.MY_BARK_KEY }}
+          MY_BARK_KEY: ${{ secrets.MY_BARK_KEY }}
         run: python api/cron.py
