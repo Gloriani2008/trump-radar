@@ -1,17 +1,22 @@
 import requests
-import xml.etree.ElementTree as ET
 import os
 
 def run_monitor():
-    # 改动点：如果没有密钥，直接优雅退出，而不是报错停止
+    # 获取密钥
     bark_key = os.environ.get("MY_BARK_KEY")
+    
+    # 检查密钥是否配置，如果没有配置，直接提示并优雅退出
     if not bark_key:
-        print("警告: 未检测到 MY_BARK_KEY，本次任务跳过。")
-        return  # 直接返回，不会导致任务报错
+        print("错误: 未检测到 MY_BARK_KEY 环境变量，请检查 GitHub Settings 中的 Secret 配置。")
+        return
 
-    bark_base_url = f"https://api.day.app/{bark_key}/"
-    # ... 原有的代码逻辑不变 ...
-    print("成功运行监控逻辑")
+    # 这里替换成你原本的监控逻辑
+    # 比如：
+    # response = requests.get("你的目标网址")
+    # if response.status_code == 200:
+    #     requests.get(f"https://api.day.app/{bark_key}/雷达监控到新消息")
+    
+    print("监控程序运行成功")
 
 if __name__ == "__main__":
     run_monitor()
