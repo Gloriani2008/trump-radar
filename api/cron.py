@@ -4,7 +4,7 @@ import os
 import sys
 
 # 1. 监控源和敏感词配置
-TRUMP_TWITTER_RSS = "https://rsshub.app/twitter/user/realDonaldTrump"
+TRUMP_TWITTER_RSS = "https://rsshub.app/bilibili/user/dynamic/208259"
 KEYWORDS = ["iran", "oil", "crude", "fed", "rate", "powell", "伊朗", "原油", "美联储", "降息", "加息"]
 
 def run_monitor():
