@@ -1,0 +1,20 @@
+name: Trump Radar Cron
+on:
+  schedule:
+    - cron: '*/5 * * * *' # 这里你可以改成每 5 分钟，甚至每 1 分钟运行一次
+  workflow_dispatch: # 允许你手动点击按钮触发测试
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: pip install requests
+      - name: Run script
+        run: python api/cron.py
+        env:
+          MY_BARK_KEY: ${{ secrets.MY_BARK_KEY }} # 在 GitHub 仓库设置 -> Secrets 里填入
