@@ -1,8 +1,8 @@
 name: Trump Radar Cron
 on:
   schedule:
-    - cron: '*/5 * * * *' # 每5分钟运行一次
-  workflow_dispatch:      # 允许你在 GitHub 页面手动点“运行”测试
+    - cron: '*/5 * * * *'
+  workflow_dispatch: 
 
 jobs:
   run-script:
@@ -16,6 +16,6 @@ jobs:
       - name: Install dependencies
         run: pip install requests
       - name: Run script
-        run: python api/cron.py
         env:
-          MY_BARK_KEY: ${{ secrets.MY_BARK_KEY }}
+          MY_BARK_KEY: ${{ secrets.MY_BARK_KEY }} # 必须包含这一行，且缩进要对齐
+        run: python api/cron.py
